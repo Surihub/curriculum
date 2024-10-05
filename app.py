@@ -6,7 +6,7 @@ curri = pd.read_csv("data/수학과 교육과정 �
 
 # 타이틀 설정
 st.title("🥘 교육과정 찾기")
-st.info("curricurri에 오신 것을 환영합니다. 과목별 2015개정교육과정, 2022개정교육과정을 쉽게 찾아보세요.")
+st.info("curricurri에 오신 것을 환영합니다. 과목별 2015개정교육과정, 2022개정교육과정을 쉽게 찾고 비교해보세요.현재는 수학만 지원됩니다. ")
 
 # 검색 필터 추가
 revision_options = curri['개정일시'].dropna().unique().tolist()
@@ -49,7 +49,7 @@ def color_rows(row):
         return [''] * len(row)
 
 # 데이터프레임 스타일링 적용
-styled_curri = filtered_curri[['성취기준', '개정일시', '학교급', '교육과정', '과목', '영역']].style.apply(lambda x: pd.Series(color_rows(x), index=x.index), axis=1)
+styled_curri = filtered_curri[['개정일시', '성취기준', '학교급', '교육과정', '과목', '영역']].style.apply(lambda x: pd.Series(color_rows(x), index=x.index), axis=1)
 
 # 스타일링된 데이터프레임 출력
 st.dataframe(styled_curri)
