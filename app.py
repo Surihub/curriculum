@@ -8,6 +8,7 @@ st.set_page_config(
 
 # 파일 읽기
 curri = pd.read_csv("data/수학과 교육과정 정리 - 교육과정합본.csv")
+idea = pd.read_csv("data/수학과 교육과정 정리 - 2022핵심아이디어.csv")
 
 # 타이틀 설정
 st.title("🥘 교육과정 찾기")
@@ -55,6 +56,15 @@ def color_rows(row):
         return ['background-color: #DAB6B1'] * len(row)  # 아래의 색상
     else:
         return [''] * len(row)
+
+if "2022개정" in filtered_curri["개정일시"].unique():
+    dom = filtered_curri.과목.unique()
+    f_idea = idea[idea.영역.isin(dom)]
+
+with st.expander("💡관련된 핵심아이디어 살펴보기"):
+    st.dataframe(f_idea)
+
+    
 
 # 데이터프레임 스타일링 적용
 styled_curri = filtered_curri[['개정일시', '성취기준', '학교급', '교육과정', '과목', '영역']].style.apply(lambda x: pd.Series(color_rows(x), index=x.index), axis=1)
