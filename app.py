@@ -1,14 +1,21 @@
 import streamlit as st
 import pandas as pd
+from streamlit_gsheets import GSheetsConnection
 
-st.set_page_config(
-   page_title='교육과정 찾기',
-   page_icon='🥘', 
-)
+st.set_page_config(page_title='교육과정 찾기',page_icon='🥘')
+
+curri_url = st.secrets["gsheets"]["curri_url"]
+idea_url = st.secrets["gsheets"]["idea_url"]
+conn = st.connection("gsheets", type=GSheetsConnection)
+curri = conn.read(spreadsheet=curri_url, usecols=[0,1,2,3,4,5,6,7]) 
+# st.write(curri.head())
+
+idea = conn.read(spreadsheet=idea_url, usecols=[0,1]) 
+# st.write(idea.head())
 
 # 파일 읽기
-curri = pd.read_csv("data/수학과 교육과정 정리 - 교육과정합본.csv")
-idea = pd.read_csv("data/수학과 교육과정 정리 - 2022핵심아이디어.csv")
+# curri = pd.read_csv("data/수학과 교육과정 정리 - 교육과정합본.csv")
+# idea = pd.read_csv("data/수학과 교육과정 정리 - 2022핵심아이디어.csv")
 
 # 타이틀 설정
 st.title("🥘 교육과정 찾기")
