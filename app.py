@@ -19,7 +19,7 @@ idea = conn.read(spreadsheet=idea_url, usecols=[0,1])
 
 # 타이틀 설정
 st.title("🥘 교육과정 찾기")
-st.info("curricurri에 오신 것을 환영합니다. 과목별 2015개정교육과정, 2022개정교육과정을 쉽게 찾고 비교해보세요. 현재는 수학만 지원됩니다. :email: sbhath17@gmail.com")
+st.info("**curricurri**에 오신 것을 환영합니다. 과목별 2015개정교육과정, 2022개정교육과정을 쉽게 찾고 비교해보세요. 현재는 수학만 지원됩니다. 성취기준 상의 오류 제보 등은 여기로 해주세요! :email: sbhath17@gmail.com")
 
 # 검색 필터 추가
 st.markdown("### 교육과정 성취기준 필터링", help='개정 일시와 영역, 학교급, 과목을 선택해보세요. 선택하지 않은 경우 전체 선택으로 인식됩니다.')
