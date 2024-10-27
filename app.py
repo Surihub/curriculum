@@ -67,9 +67,12 @@ def color_rows(row):
 if "2022개정" in filtered_curri["개정일시"].unique():
     dom = filtered_curri.과목.unique()
     f_idea = idea[idea.영역.isin(dom)]
+    with st.expander("💡관련된 핵심아이디어 살펴보기"):
+        st.dataframe(f_idea)
+else:
+    with st.expander("💡관련된 핵심아이디어 살펴보기"):
+        st.error("2015개정 교육과정에는 핵심아이디어가 없습니다. ")
 
-with st.expander("💡관련된 핵심아이디어 살펴보기"):
-    st.dataframe(f_idea)
 
     
 
